@@ -1,10 +1,7 @@
 # Proyek Analisis Data: E-Commerce Public Dataset
 
-Proyek ini menganalisis E-Commerce Public Dataset (Olist) untuk menjawab dua pertanyaan bisnis, lalu menyajikan hasilnya dalam dashboard interaktif menggunakan Streamlit.
+Proyek ini menganalisis E-Commerce Public Dataset (Brazilian E-Commerce by Olist) untuk menjawab dua pertanyaan bisnis, lalu menyajikan hasilnya dalam dashboard interaktif menggunakan Streamlit.
 
-- **Nama:** [isi nama]
-- **Email:** [isi email]
-- **ID Dicoding:** [isi username]
 
 ## Pertanyaan Bisnis
 
@@ -13,12 +10,23 @@ Proyek ini menganalisis E-Commerce Public Dataset (Olist) untuk menjawab dua per
 
 ## Ringkasan Hasil
 
-- Lima kategori teratas (health_beauty, watches_gifts, bed_bath_table, sports_leisure, computers_accessories) menyumbang 39,88% total revenue.
-- Pesanan yang terlambat memiliki rata-rata review score 2,27, jauh di bawah pesanan tepat waktu yang mencapai 4,29.
-- State dengan persentase keterlambatan tertinggi: AL (20,87%), MA (17,21%), dan SE (15,11%).
-- 18 dari 74 kategori menyumbang 81,29% revenue dan pesanan terlambat (>7 hari) mendapat review rata-rata sekitar 1,7.
+**Pertanyaan 1: Revenue per kategori**
 
-Detail analisis, insight, dan rekomendasi action item ada di notebook `Proyek_Analisis_Data.ipynb`.
+- Lima kategori teratas (`health_beauty`, `watches_gifts`, `bed_bath_table`, `sports_leisure`, `computers_accessories`) menyumbang **39,88%** total revenue.
+- Revenue terkonsentrasi di segelintir kategori: 18 dari 74 kategori menyumbang **81,29%** total revenue.
+
+**Pertanyaan 2: Keterlambatan pengiriman**
+
+- Pesanan terlambat memiliki rata-rata review score **2,27**, jauh di bawah pesanan tepat waktu yang mencapai **4,29**.
+- Semakin lama keterlambatannya, semakin rendah review: pesanan yang terlambat lebih dari 7 hari mendapat rata-rata sekitar **1,7**.
+- State dengan persentase keterlambatan tertinggi: **AL (20,87%)**, **MA (17,21%)**, dan **SE (15,11%)**.
+
+**Rekomendasi singkat**
+
+- Prioritaskan stok, promosi, dan kualitas layanan pada kategori dengan kontribusi revenue terbesar.
+- Perbaiki logistik di state dengan keterlambatan tinggi, karena keterlambatan terbukti menekan kepuasan pelanggan.
+
+Detail analisis, insight, dan rekomendasi action item lengkap ada di notebook `Proyek_Analisis_Data.ipynb`.
 
 ## Struktur Proyek
 
@@ -38,7 +46,9 @@ proyek-analisis-data/
 
 Dataset yang digunakan adalah **E-Commerce Public Dataset** (Brazilian E-Commerce Public Dataset by Olist) yang disediakan pada kriteria submission. Tabel yang dipakai: `customers`, `orders`, `order_items`, `order_reviews`, `products`, dan `product_category_name_translation`.
 
-Data hasil cleaning yang dibaca dashboard (`sales_main.csv` dan `delivery_main.csv`) dihasilkan dari notebook.
+Dataset mentah disimpan di folder `data/`. Jika folder tersebut kosong atau tidak ikut ter-clone, unduh dataset Olist dari [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) lalu letakkan file CSV-nya di `data/`.
+
+Data hasil cleaning yang dibaca dashboard (`sales_main.csv` dan `delivery_main.csv`) dihasilkan dari notebook dan diekspor ke folder `dashboard/`. Seluruh analisis dibatasi pada periode Januari 2017 – Agustus 2018.
 
 ## Menjalankan Dashboard
 
@@ -82,6 +92,8 @@ python -m streamlit run dashboard/dashboard.py
 ## Menjalankan Notebook
 
 Notebook dapat dijalankan di Google Colab atau di lokal (VSCode/Jupyter). Sesuaikan variabel `DATA_DIR` pada bagian Gathering Data dengan lokasi folder dataset mentah, misalnya `"data/"`.
+
+Menjalankan notebook sampai akhir akan menghasilkan ulang `sales_main.csv` dan `delivery_main.csv` di folder `dashboard/`.
 
 ## Library yang Digunakan
 
